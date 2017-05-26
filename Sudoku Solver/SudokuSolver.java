@@ -11,6 +11,7 @@ public class SudokuSolver {
 		sudokuSolver(board);
 	}
 	
+	//checks when the board is fully solved
 	public static boolean checkIfFull(int[][] board)
 	{
 		for(int x=0;x<9;++x)
@@ -24,7 +25,6 @@ public class SudokuSolver {
 	public static int[] possibleEntries(int[][] board,int i,int j)
 	{
 		//create the possibility list of size 10 so that numbers 1 to 9 could be placed
-		//as the list value by referencing them to index values later
 		int[] possibilityArray = new int[10];
 		
 		//initialize all values of possibility array to 0
@@ -32,7 +32,7 @@ public class SudokuSolver {
 			possibilityArray[x]=0;
 		
 		//we are traversing horizontally keeping i as constant
-		//if the value is already present in the board, set those cells in probabilityList as 1
+		//if the value is already present in the board, set those cells in probabilityArray as 1
 		// later these 1 values will be taken as values to be skipped.
 		//board cells having zero values will be considered as next probable value
 		for(int y=0;y<9;++y)
@@ -62,7 +62,7 @@ public class SudokuSolver {
 		else
 			l=6;
 		
-		//iterate inside smaller 3 x 3 square to set possibility array cell value to 1
+		//iterate inside smaller 3 x 3 square to set available values in possibility array cell value to 1
 		for(int x=k;x<(k+3);++x)
 			for(int y=l;y<(l+3);++y)
 				if(board[x][y]!=0)
